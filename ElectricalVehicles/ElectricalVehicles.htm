@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+ <!-- Created by ChatGPT  -->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Vehicle Population</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Electric Vehicle Population Over the Last Month</h1>
+        <canvas id="evChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        // Static Data: EV population for the last 30 days (example)
+        const labels = [
+            "Mar 1", "Mar 2", "Mar 3", "Mar 4", "Mar 5", "Mar 6", "Mar 7", "Mar 8", "Mar 9", "Mar 10", 
+            "Mar 11", "Mar 12", "Mar 13", "Mar 14", "Mar 15", "Mar 16", "Mar 17", "Mar 18", "Mar 19", 
+            "Mar 20", "Mar 21", "Mar 22", "Mar 23", "Mar 24", "Mar 25", "Mar 26", "Mar 27", "Mar 28", 
+            "Mar 29", "Mar 30", "Mar 31"
+        ];
+
+        // Static Data: Electric vehicle population (example data)
+        const evPopulation = [
+            2500, 2520, 2550, 2570, 2600, 2625, 2650, 2675, 2700, 2725,
+            2750, 2780, 2800, 2825, 2850, 2875, 2900, 2930, 2950, 2975,
+            3000, 3050, 3100, 3150, 3200, 3250, 3300, 3350, 3400, 3450, 
+            3500, 3550, 3600
+        ];
+
+        // Function to render the chart using Chart.js
+        function renderChart(labels, evPopulation) {
+            const ctx = document.getElementById('evChart').getContext('2d');
+            const evChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'EV Population',
+                        data: evPopulation,
+                        borderColor: 'rgb(75, 192, 192)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: false,
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                        }
+                    }
+                }
+            });
+        }
+
+        // Render the chart with static data
+        renderChart(labels, evPopulation);
+    </script>
+</body>
+</html>
